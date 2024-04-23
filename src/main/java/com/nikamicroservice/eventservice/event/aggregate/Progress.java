@@ -1,4 +1,4 @@
-package com.nikamicroservice.eventservice.event;
+package com.nikamicroservice.eventservice.event.aggregate;
 
 import java.util.List;
 

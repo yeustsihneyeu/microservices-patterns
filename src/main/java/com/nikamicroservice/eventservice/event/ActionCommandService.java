@@ -1,6 +1,14 @@
 package com.nikamicroservice.eventservice.event;
 
 
+import com.nikamicroservice.eventservice.event.aggregate.Action;
+import com.nikamicroservice.eventservice.event.command.ActionCommand;
+import com.nikamicroservice.eventservice.event.command.ActionCommands.ActionApproveCommand;
+import com.nikamicroservice.eventservice.event.command.ActionCommands.ActionCreatedCommand;
+import com.nikamicroservice.eventservice.event.command.ActionCommands.ActionRejectCommand;
+import com.nikamicroservice.eventservice.event.command.ActionCommands.ActionUpdateCommand;
+import com.nikamicroservice.eventservice.event.web.ActionRequest;
+import com.nikamicroservice.eventservice.event.web.ActionResponse;
 import io.eventuate.sync.AggregateRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -24,5 +32,13 @@ public class ActionCommandService {
 
   public void update(String id, ActionRequest request) {
     actionRepository.update(id, new ActionUpdateCommand(request.name(), request.progress()));
+  }
+
+  public void reject(ActionRejectCommand rejectCommand) {
+    actionRepository.update(rejectCommand.actionId(), rejectCommand);
+  }
+
+  public void approve(ActionApproveCommand approveCommand) {
+    actionRepository.update(approveCommand.actionId(), approveCommand);
   }
 }

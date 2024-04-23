@@ -1,5 +1,7 @@
-package com.nikamicroservice.eventservice.event;
+package com.nikamicroservice.eventservice.event.eventSourcing;
 
+import com.nikamicroservice.eventservice.event.aggregate.Action;
+import com.nikamicroservice.eventservice.event.command.ActionCommands.ActionCreatedCommand;
 import io.eventuate.Aggregate;
 import io.eventuate.Aggregates;
 import io.eventuate.Event;

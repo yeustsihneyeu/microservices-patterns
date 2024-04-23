@@ -1,9 +1,8 @@
-package com.nikamicroservice.eventservice.event;
+package com.nikamicroservice.eventservice.event.web;
 
+import com.nikamicroservice.eventservice.event.ActionCommandService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -11,12 +10,6 @@ import java.util.List;
 public class ActionController {
 
   private final ActionCommandService actionCommandService;
-  private final ActionViewService actionViewService;
-
-  @GetMapping
-  public List<ActionView> getAllActions() {
-    return actionViewService.getAllActions();
-  }
 
   @PostMapping
   public void createAction(@RequestBody ActionRequest request) {
